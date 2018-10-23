@@ -1,0 +1,17 @@
+.none-list-type{
+    list-style: none;
+}
+
+.task-completed{
+    text-decoration: line-through;
+}
+
+li > ol {
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    li > ol {
+        margin-left: 20%;
+    }
+}

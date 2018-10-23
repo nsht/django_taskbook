@@ -1,0 +1,15 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+<h1>Add new todo</h1>
+<form action="{% url 'todo:add_todo' %}" method="POST" >
+    {% csrf_token %}
+    <label for="todo_item">Name</label>
+    <input id="todo_item" type="text" name="todo_item">
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+    <input type="submit" name = "new_todo" value="Add New Todo">
+</form>
+
+{% endblock %}

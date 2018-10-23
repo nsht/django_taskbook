@@ -1,0 +1,4 @@
+todoapp/db.sqlite3
+*.log
+*.pot
+todoapp/todoapp/secrets.py
