@@ -1,5 +1,5 @@
 {% extends "todo/base.html" %}
-
+{% load todo_templates %}
 {% block content %}
 <h1 class="title">TaskBook</h1>
 {% csrf_token %}
@@ -27,7 +27,8 @@
                     <li class="task-completed">
                     <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" checked>
                     {% endif %}
-                    {{ subitem.sub_item }}
+                    <span>{{ subitem.sub_item }}</span>
+                    <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
                 </li>
                 {% endfor %}
         </ol>

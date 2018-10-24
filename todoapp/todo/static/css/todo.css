@@ -15,13 +15,18 @@
     margin-left: 3%;
 }
 
-.fa-star{
+.relative-date{
     font-size: 0.8em;
+    color: grey;
+    margin: 5px;
 }
-
 
 @media only screen and (max-width: 600px) {
     .sub-item {
         margin-left: 15%;
     }
+}
+
+.fa-star{
+    font-size: 0.8em;
 }
