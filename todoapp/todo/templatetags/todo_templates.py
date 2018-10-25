@@ -2,16 +2,18 @@ import datetime
 
 from django.utils import timezone
 from django import template
-
+import pdb
 register = template.Library()
 
-@register.filter
+@register.filter(expects_localtime=True)
 def custom_timestamp(date):
-    now = timezone.now()
+    now = timezone.localtime(timezone.now())
     diff = now - date
-    if diff < datetime.timedelta(1):
+    if now.day == date.day:
         return "Today"
-    elif diff < datetime.timedelta(2) and diff > datetime.timedelta(1):
+    elif now.day - date.day == 1:
         return "Yesterday"
+    elif diff.days < 0:
+        return str(abs(diff.days)) + " days later"
     else:
         return str(diff.days) + " days ago"
