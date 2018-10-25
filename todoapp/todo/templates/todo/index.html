@@ -5,7 +5,7 @@
 {% csrf_token %}
 <ul class="none-list-type">
     {% for todo in todos %}
-    <section class="section">
+    <section class="todo-item">
         <li>
             <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}

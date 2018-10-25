@@ -21,6 +21,10 @@
     margin: 5px;
 }
 
+.todo-item{
+    padding:15px;
+}
+
 @media only screen and (max-width: 600px) {
     .sub-item {
         margin-left: 15%;
