@@ -15,10 +15,10 @@ class TodoItem(models.Model):
     todo_item = models.CharField(max_length=255)
     status = models.IntegerField(choices=status,default=0)
     created = models.DateTimeField("Created")
-    updated = models.DateTimeField("Updated",null=True)
-    description = models.CharField("Description",max_length=255,null=True)
-    starred = models.IntegerField(choices=starred_choice,null=True,default=0)
-    deadline = models.DateTimeField("Deadline",null=True)
+    updated = models.DateTimeField("Updated",null=True,blank=True)
+    description = models.CharField("Description",max_length=255,null=True,blank=True)
+    starred = models.IntegerField(choices=starred_choice,null=True,default=0,blank=True)
+    deadline = models.DateTimeField("Deadline",null=True,blank=True)
 
 
 
@@ -35,9 +35,9 @@ class SubItem(models.Model):
     sub_item = models.CharField(max_length=255)
     status = models.IntegerField(choices=status,default=0)
     sub_created = models.DateTimeField("Created")
-    sub_updated = models.DateTimeField("Updated",null=True)
-    sub_deadline = models.DateTimeField("Deadline",null=True)
-    sub_description = models.CharField("Description",max_length=255,null=True)
+    sub_updated = models.DateTimeField("Updated",null=True,blank=True)
+    sub_deadline = models.DateTimeField("Deadline",null=True,blank=True)
+    sub_description = models.CharField("Description",max_length=255,null=True,blank=True)
 
 
 

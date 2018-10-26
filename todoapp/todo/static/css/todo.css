@@ -6,12 +6,31 @@
     text-decoration: line-through;
 }
 
-li > ol {
-    margin-left: 5%;
+.board{
+    text-decoration: underline;
+}
+
+.sub-item {
+    margin-top: 1%;
+    margin-left: 3%;
+}
+
+.relative-date{
+    font-size: 0.8em;
+    color: grey;
+    margin: 5px;
+}
+
+.todo-item{
+    padding:15px;
 }
 
 @media only screen and (max-width: 600px) {
-    li > ol {
-        margin-left: 20%;
+    .sub-item {
+        margin-left: 15%;
     }
+}
+
+.fa-star{
+    font-size: 0.8em;
 }
