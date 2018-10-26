@@ -43,3 +43,13 @@ def toggle_completion(request):
             todo.status = 0
         todo.save()
         return HttpResponse(status=200)
+
+def toggle_stars(request):
+    todo = get_object_or_404(TodoItem,id=request.POST['id'])
+    if todo:
+        if todo.starred == 0:
+            todo.starred = 1
+        else:
+            todo.starred = 0
+        todo.save()
+        return HttpResponse(status=200)

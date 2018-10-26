@@ -9,9 +9,9 @@
         <li>
             <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}
-                <span class="icon has-text-grey">
+                <span class="icon has-text-grey star-toggle" id = "{{todo.id}}">
             {% else %}
-                <span class="icon has-text-warning">
+                <span class="icon has-text-warning star-toggle" id = "{{todo.id}}">
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
