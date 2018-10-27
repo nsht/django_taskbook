@@ -2,6 +2,10 @@
 {% load todo_templates %}
 {% block content %}
 <h1 class="title">TaskBook</h1>
+<a href="{% url 'todo:new_todo' %}" id="new_todo_link">
+    <i class="fas fa-plus"></i>
+    New Todo
+</a>
 {% csrf_token %}
 <ul class="none-list-type">
     {% for todo in todos %}
@@ -36,4 +40,22 @@
     </section>
     {% endfor %}
 </ul>
+
+<div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h1>Add new todo</h1>
+                <form action="{% url 'todo:add_todo' %}" method="POST" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="save btn btn-default">Save</button>
+                </form>
+            </div>
+
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
 {% endblock %}
+

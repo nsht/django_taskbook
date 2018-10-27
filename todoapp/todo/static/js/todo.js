@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    // Check and uncheck TodoItems
     $('.completed-checkbox').click(function(){
         var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
         var data = {
@@ -24,6 +26,7 @@ $(document).ready(function(){
 
     });
 
+    // Star and Unstar TodoItems
     $('.star-toggle').click(function(){
         var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
         var data = {
@@ -43,7 +46,19 @@ $(document).ready(function(){
         }
         $.post("/toggle-star",data).done(function( result ) {
         });
-
-
     });
+
+    $('#new_todo_link').click(function(event){
+        event.preventDefault();
+        $('.modal').addClass('is-active');
+    });
+
+    $('.modal-background').click(function(){
+       $('.modal').removeClass('is-active');
+    });
+
+    $('.modal-close').click(function(){
+        $('.modal').removeClass('is-active');
+     });
+
 });

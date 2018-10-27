@@ -1,34 +1,40 @@
+import pdb
+
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from .models import TodoItem,SubItem
 from django.utils import timezone
-import pdb
+
+from .forms import TodoItemForm
 # Create your views here.
 
 def index(request):
-    template = loader.get_template('todo/index.html')
-    print(request)
+    form = TodoItemForm()
     # todos = TodoItem.objects.all()
     todos = TodoItem.objects.prefetch_related('subitem_set').all()
     # todos[4].subitem_set.all()
-    context = {'todos':todos}
-    return HttpResponse(template.render(context,request))
+    context = {
+        'todos':todos,
+        'form' : form
+        }
+    return render(request,'todo/index.html',context=context)
 
 def new_todo(request):
-    return render(request,'todo/new_todo.html')
+    form = TodoItemForm()
+
+    return render(request,'todo/new_todo.html', {'form': form})
 
 def add_todo(request):
     print(request.POST)
     todo_item=request.POST['todo_item']
-    description=request.POST['description']
     print(todo_item)
 
     new_todo = TodoItem.objects.create(
-        todo_item=todo_item,description=description,created=timezone.now(),status=0
+        todo_item=todo_item,created=timezone.now(),status=0
         )
     new_todo.save()
-    return HttpResponse("New Todo Added")
+    return HttpResponse(status=200)
 
 
 def toggle_completion(request):
