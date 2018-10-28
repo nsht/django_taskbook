@@ -11,9 +11,7 @@ from .forms import TodoItemForm
 
 def index(request):
     form = TodoItemForm()
-    # todos = TodoItem.objects.all()
     todos = TodoItem.objects.prefetch_related('subitem_set').all()
-    # todos[4].subitem_set.all()
     context = {
         'todos':todos,
         'form' : form
@@ -26,15 +24,15 @@ def new_todo(request):
     return render(request,'todo/new_todo.html', {'form': form})
 
 def add_todo(request):
-    print(request.POST)
     todo_item=request.POST['todo_item']
-    print(todo_item)
-
     new_todo = TodoItem.objects.create(
         todo_item=todo_item,created=timezone.now(),status=0
         )
     new_todo.save()
-    return HttpResponse(status=200)
+    context = {
+        "todo":new_todo
+    }
+    return render(request,'todo/single_todo.html',context)
 
 
 def toggle_completion(request):

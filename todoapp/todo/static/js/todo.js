@@ -48,9 +48,12 @@ $(document).ready(function(){
         });
     });
 
+
+    // New Todo Modal Functions
     $('#new_todo_link').click(function(event){
         event.preventDefault();
         $('.modal').addClass('is-active');
+        $('#id_todo_item').focus();
     });
 
     $('.modal-background').click(function(){
@@ -61,4 +64,37 @@ $(document).ready(function(){
         $('.modal').removeClass('is-active');
      });
 
+// New Todo form submit functions
+    $('#new_todo_form').submit(function(event){
+        event.preventDefault();
+        var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
+        var data = {
+            csrfmiddlewaretoken: csrftoken,
+            todo_item:$('#id_todo_item').val()
+        }
+        console.log(data);
+        $.post("/add",data).done(function( result ) {
+            $('.modal').removeClass('is-active');
+        })
+        .done(function(result){
+            console.log(result)
+            html = $.parseHTML(result)
+            $('#parent_list').append(result)
+
+        });
+    });
+
+
+
+
 });
+
+// Tried to use plain js instead of jquery
+document.onkeyup = function(e) {
+    if(e.which == 78){
+        if(!document.getElementById('new_todo_modal').classList.contains("is-active")) {
+            document.getElementById('new_todo_modal').classList.add("is-active");
+            document.getElementById('id_todo_item').focus();
+        }
+    }
+}
