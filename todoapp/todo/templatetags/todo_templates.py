@@ -11,8 +11,9 @@ def custom_timestamp(date):
     diff = now - date
     if now.day == date.day:
         return "Today"
-    elif now.day - date.day == 1:
+    elif diff.days >= 1 and diff.days < 2:
         return "Yesterday"
+    # Future date possible time traveller or dst messup
     elif diff.days < 0:
         return str(abs(diff.days)) + " days later"
     else:
