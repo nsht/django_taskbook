@@ -2,11 +2,15 @@
 {% load todo_templates %}
 {% block content %}
 <h1 class="title">TaskBook</h1>
+<a href="{% url 'todo:new_todo' %}" id="new_todo_link">
+    <i class="fas fa-plus"></i>
+    New Todo (n)
+</a>
 {% csrf_token %}
-<ul class="none-list-type">
+<ul class="none-list-type" id="parent_list">
     {% for todo in todos %}
+    <li id ="{{todo.id}}">
     <section class="todo-item">
-        <li>
             <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}
                 <span class="icon has-text-grey star-toggle" id = "{{todo.id}}">
@@ -15,7 +19,6 @@
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
-        </li>
 
         {% if todo.subitem_set.all %}
         <ol class="sub-item">
@@ -34,6 +37,26 @@
         </ol>
         {% endif %}
     </section>
+</li>
+
     {% endfor %}
 </ul>
+
+<div class="modal" id="new_todo_modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h1>Add new todo</h1>
+                <form id="new_todo_form" action="{% url 'todo:add_todo' %}" method="POST" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="save btn btn-default">Save</button>
+                </form>
+            </div>
+
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
 {% endblock %}
+
