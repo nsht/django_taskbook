@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     // Check and uncheck TodoItems
     $('.completed-checkbox').click(function(){
         var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
@@ -53,6 +52,7 @@ $(document).ready(function(){
     $('#new_todo_link').click(function(event){
         event.preventDefault();
         $('.modal').addClass('is-active');
+        $('#id_todo_item').val('');
         $('#id_todo_item').focus();
     });
 
@@ -94,6 +94,7 @@ document.onkeyup = function(e) {
     if(e.which == 78){
         if(!document.getElementById('new_todo_modal').classList.contains("is-active")) {
             document.getElementById('new_todo_modal').classList.add("is-active");
+            document.getElementById('id_todo_item').value = "";
             document.getElementById('id_todo_item').focus();
         }
     }
