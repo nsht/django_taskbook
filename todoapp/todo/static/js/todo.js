@@ -97,4 +97,10 @@ document.onkeyup = function(e) {
             document.getElementById('id_todo_item').focus();
         }
     }
+    else if(e.which == 27){
+        if(document.getElementById('new_todo_modal').classList.contains("is-active")) {
+            document.getElementById('new_todo_modal').classList.remove("is-active");
+        }
+    }
+
 }
