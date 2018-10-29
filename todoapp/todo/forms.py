@@ -1,5 +1,6 @@
 from django import forms
-from .models import TodoItem,SubItem
+from .models import TodoItem, SubItem
+
 
 class TodoItemForm(forms.ModelForm):
     class Meta:
