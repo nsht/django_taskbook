@@ -64,7 +64,7 @@ def toggle_stars(request):
 
 def new_sub_item(request):
     id=request.POST['todo_item_id']
-    id = id[-1]
+    id = id.split('_')[-1]
     todo = get_object_or_404(TodoItem, id=id)
     sub_item = todo.subitem_set.create(
         sub_item = request.POST['sub_item'],sub_created=timezone.now()

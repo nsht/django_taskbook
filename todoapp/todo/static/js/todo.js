@@ -82,6 +82,12 @@ $(document).ready(function(){
             console.log(result)
             html = $.parseHTML(result)
             $('#parent_list').append(result)
+            var aclick = document.getElementsByClassName('new-sub-item');
+
+            Array.from(aclick).forEach(function(element) {
+                element.addEventListener("click", handleClick,false);
+              });
+
 
         });
     });
@@ -97,6 +103,7 @@ $(document).ready(function(){
                     sub_item:$('.new-todo-text-box').val()
                 }
                 todo_item_id = $('.new-todo-text-box').attr('data-todoid');
+                todo_item_id = todo_item_id.split("_");
                 var lastChar = todo_item_id[todo_item_id.length -1];
                 var parent = $('.new-todo-text-box').parent();
 
@@ -140,7 +147,6 @@ document.onkeyup = function(e) {
 var aclick = document.getElementsByClassName('new-sub-item');
 
 Array.from(aclick).forEach(function(element) {
-    console.log(element);
     element.addEventListener("click", handleClick,false);
   });
 

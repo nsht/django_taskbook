@@ -11,6 +11,4 @@ urlpatterns = [
     path('toggle-star', views.toggle_stars, name='toggle_stars'),
     path('toggle-star', views.toggle_stars, name='toggle_stars'),
     path('new-sub-item', views.new_sub_item, name='new_sub_item'),
-
-
 ]
