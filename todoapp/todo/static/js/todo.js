@@ -2,6 +2,8 @@
 
 $(document).ready(function(){
     // Check and uncheck TodoItems
+    onclick_bind()
+    function onclick_bind(){
     $('.completed-checkbox').click(function(){
         var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
         var data = {
@@ -48,7 +50,7 @@ $(document).ready(function(){
         $.post("/toggle-star",data).done(function( result ) {
         });
     });
-
+    }
 
     // New Todo Modal Functions
     $('#new_todo_link').click(function(event){
@@ -87,7 +89,7 @@ $(document).ready(function(){
             Array.from(aclick).forEach(function(element) {
                 element.addEventListener("click", handleClick,false);
               });
-
+              onclick_bind()
 
         });
     });
@@ -112,6 +114,7 @@ $(document).ready(function(){
                 $('.new-todo-text-box').remove();
                 parent.append(result);
                 append_new_subitem_textbox(lastChar)
+                onclick_bind()
 
                 })
             }
