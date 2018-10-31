@@ -1,3 +1,4 @@
+<!-- TODO Fix duplicate ids replace id with data-attributes -->
 {% extends "todo/base.html" %}
 {% load todo_templates %}
 {% block content %}
@@ -19,9 +20,9 @@
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
-
-        {% if todo.subitem_set.all %}
+            
         <ol class="sub-item">
+        {% if todo.subitem_set.all %}
                 {% for subitem in todo.subitem_set.all %}
                     {% if subitem.status == 0 %}
                     <li>
@@ -34,8 +35,13 @@
                     <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
                 </li>
                 {% endfor %}
-        </ol>
+
         {% endif %}
+    </ol>
+    <a class="new-sub-item" data-todoid = "{{todo.id}}" id = "todo_{{todo.id}}">
+            <i class="fas fa-plus"></i>
+             Add New
+        </a>
     </section>
 </li>
 

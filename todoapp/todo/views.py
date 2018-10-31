@@ -20,7 +20,7 @@ def index(request):
     return render(request, 'todo/index.html', context=context)
 
 
-def new_todo(request):
+def new_todo_page(request):
     form = TodoItemForm()
 
     return render(request, 'todo/new_todo.html', {'form': form})
@@ -61,3 +61,15 @@ def toggle_stars(request):
             todo.starred = 0
         todo.save()
         return HttpResponse(status=200)
+
+def new_sub_item(request):
+    id=request.POST['todo_item_id']
+    id = id.split('_')[-1]
+    todo = get_object_or_404(TodoItem, id=id)
+    sub_item = todo.subitem_set.create(
+        sub_item = request.POST['sub_item'],sub_created=timezone.now()
+    )
+    print(sub_item)
+    context = {'subitem':sub_item}
+    return render(request,'todo/single_sub_item.html', context)
+    # return HttpResponse(status=200)
