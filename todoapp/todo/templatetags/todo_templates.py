@@ -11,10 +11,12 @@ def custom_timestamp(date):
     diff = now - date
     if now.day == date.day:
         return "Today"
-    elif diff.days >= 1 and diff.days < 2:
+    elif (now - datetime.timedelta(1)).day == date.day:
         return "Yesterday"
     # Future date possible time traveller or dst messup
     elif diff.days < 0:
         return str(abs(diff.days)) + " days later"
     else:
+        if diff.days == 0:
+            pdb.set_trace()
         return str(diff.days) + " days ago"
