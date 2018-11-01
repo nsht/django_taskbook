@@ -34,7 +34,7 @@ $(document).ready(function(){
         var csrftoken = $('[name="csrfmiddlewaretoken"]').val()
         var data = {
             csrfmiddlewaretoken: csrftoken,
-            id:$(this).attr('id')
+            id:$(this).attr('data-todoid')
         }
 
         if($(this).hasClass('has-text-warning')){

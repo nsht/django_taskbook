@@ -5,6 +5,8 @@ verify_ssl = true
 
 [packages]
 django = "*"
+gunicorn = "*"
+coverage = "*"
 
 [dev-packages]
 
