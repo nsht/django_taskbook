@@ -3,3 +3,5 @@ todoapp/db.sqlite3
 *.pot
 todoapp/todoapp/secrets.py
 .vscode/settings.json
+todoapp/htmlcov/
+todoapp/.coverage
