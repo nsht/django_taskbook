@@ -2,25 +2,29 @@
 {% extends "todo/base.html" %}
 {% load todo_templates %}
 {% block content %}
+
 <h1 class="title">TaskBook</h1>
+
 <a href="{% url 'todo:new_todo' %}" id="new_todo_link">
     <i class="fas fa-plus"></i>
     New Todo (n)
 </a>
+
 {% csrf_token %}
+
 <ul class="none-list-type" id="parent_list">
     {% for todo in todos %}
     <li id ="{{todo.id}}">
     <section class="todo-item">
             <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}
-                <span class="icon has-text-grey star-toggle" id = "{{todo.id}}">
+                <span class="icon has-text-grey star-toggle" data-todoid = "{{todo.id}}">
             {% else %}
-                <span class="icon has-text-warning star-toggle" id = "{{todo.id}}">
+                <span class="icon has-text-warning star-toggle" data-todoid = "{{todo.id}}">
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
-            
+
         <ol class="sub-item">
         {% if todo.subitem_set.all %}
                 {% for subitem in todo.subitem_set.all %}
