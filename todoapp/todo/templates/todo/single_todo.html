@@ -2,14 +2,14 @@
     <section class="todo-item">
             <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}
-                <span class="icon has-text-grey star-toggle" id = "{{todo.id}}">
+                <span class="icon has-text-grey star-toggle" data-todoid = "{{todo.id}}">
             {% else %}
-                <span class="icon has-text-warning star-toggle" id = "{{todo.id}}">
+                <span class="icon has-text-warning star-toggle" data-todoid = "{{todo.id}}">
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
             <ol class="sub-item">
-                
+
             </ol>
             <a class="new-sub-item" data-todoid = "{{todo.id}}" id = "todo_{{todo.id}}">
                     <i class="fas fa-plus"></i>
