@@ -16,7 +16,6 @@
     {% for todo in todos %}
     <li id ="{{todo.id}}">
     <section class="todo-item">
-            <span class="board">{{ todo.todo_item }}</span>
             {% if todo.starred == 0 %}
                 <span class="icon has-text-grey star-toggle" data-todoid = "{{todo.id}}">
             {% else %}
@@ -24,6 +23,8 @@
             {% endif %}
                     <i class="fas fa-star"></i>
             </span>
+            <span class="board">{{ todo.todo_item }}</span>
+
 
         <ol class="sub-item">
         {% if todo.subitem_set.all %}
