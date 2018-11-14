@@ -2,11 +2,12 @@
 
 {% if subitem.status == 0 %}
 <li>
-<input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" >
-{% else %}
+    <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox">
+    {% else %}
 <li class="task-completed">
-<input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" checked>
-{% endif %}
-<span>{{ subitem.sub_item }}</span>
-<span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
+    <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox"
+        checked>
+    {% endif %}
+    <span>{{ subitem.sub_item }}</span>
+    <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
 </li>

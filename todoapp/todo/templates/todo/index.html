@@ -14,60 +14,60 @@
 
 <ul class="none-list-type" id="parent_list">
     {% for todo in todos %}
-    <li id ="{{todo.id}}">
-    <section class="todo-item">
+    <li id="{{todo.id}}">
+        <section class="todo-item">
             {% if todo.starred == 0 %}
-                <span class="icon has-text-grey star-toggle" data-todoid = "{{todo.id}}">
-            {% else %}
-                <span class="icon has-text-warning star-toggle" data-todoid = "{{todo.id}}">
-            {% endif %}
+            <span class="icon has-text-grey star-toggle" data-todoid="{{todo.id}}">
+                {% else %}
+                <span class="icon has-text-warning star-toggle" data-todoid="{{todo.id}}">
+                    {% endif %}
                     <i class="fas fa-star"></i>
-            </span>
-            <span class="board">{{ todo.todo_item }}</span>
+                </span>
+                <span class="board">{{ todo.todo_item }}</span>
 
 
-        <ol class="sub-item">
-        {% if todo.subitem_set.all %}
-                {% for subitem in todo.subitem_set.all %}
+                <ol class="sub-item">
+                    {% if todo.subitem_set.all %}
+                    {% for subitem in todo.subitem_set.all %}
                     {% if subitem.status == 0 %}
                     <li>
-                    <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" >
-                    {% else %}
+                        <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox">
+                        {% else %}
                     <li class="task-completed">
-                    <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" checked>
-                    {% endif %}
-                    <span>{{ subitem.sub_item }}</span>
-                    <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
-                </li>
-                {% endfor %}
+                        <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox"
+                            checked>
+                        {% endif %}
+                        <span>{{ subitem.sub_item }}</span>
+                        <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
+                    </li>
+                    {% endfor %}
 
-        {% endif %}
-    </ol>
-    <a class="new-sub-item" data-todoid = "{{todo.id}}" id = "todo_{{todo.id}}">
-            <i class="fas fa-plus"></i>
-             Add New
-        </a>
-    </section>
-</li>
+                    {% endif %}
+                </ol>
+                <a class="new-sub-item" data-todoid="{{todo.id}}" id="todo_{{todo.id}}">
+                    <i class="fas fa-plus"></i>
+                    Add New
+                </a>
+        </section>
+    </li>
 
     {% endfor %}
 </ul>
 
 <div class="modal" id="new_todo_modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <div class="box">
-                <h1>Add new todo</h1>
-                <form id="new_todo_form" action="{% url 'todo:add_todo' %}" method="POST" >
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="save btn btn-default">Save</button>
-                </form>
-            </div>
-
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <h1>Add new todo</h1>
+            <form id="new_todo_form" action="{% url 'todo:add_todo' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="save btn btn-default">Save</button>
+            </form>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
+
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
 {% endblock %}
-
