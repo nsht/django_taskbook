@@ -1,7 +1,7 @@
 language: python
 
 python:
-  - 3.5
+  - 3.5.2
 
 
 install:
@@ -9,4 +9,4 @@ install:
 
 
 script:
-- python manage.py test
+  - python manage.py test
