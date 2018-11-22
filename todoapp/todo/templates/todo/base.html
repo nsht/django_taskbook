@@ -11,14 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css.map"> -->
     <link rel="stylesheet" href="{% static 'css/todo.css' %}">
-    <link rel="stylesheet" id="theme-css" href="{% static 'css/dark.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
 
 </head>
-<body>
+<body class="light-theme">
     <div class="section">
-
+        <div class="night-mode-toggle ">
+            <i class="fas fa-circle  fa-2x"></i>
+        </div>
         {% block content %}
         {% endblock %}
     </div>
@@ -29,4 +30,5 @@
               crossorigin="anonymous">
 </script>
 <script src="{% static 'js/todo.js' %}"></script>
+<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
 </html>

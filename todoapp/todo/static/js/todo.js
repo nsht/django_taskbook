@@ -192,5 +192,15 @@ $(document).ready(function () {
 
 
 
+    $('.night-mode-toggle').click(function(){
+        if($('body').hasClass('dark-theme')){
+            $('body').removeClass('dark-theme')
+            $('body').addClass('light-theme')
+        }
+        else{
+            $('body').removeClass('light-theme')
+            $('body').addClass('dark-theme')
+        }
+    });
 
 });
