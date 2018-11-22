@@ -61,10 +61,6 @@ body{
 }
 
 
-.dark-theme[class='.night-mode-toggle']{
-    color:#fff !important;
-}
-
 .night-mode-toggle{
     float:right;
     cursor: pointer;
