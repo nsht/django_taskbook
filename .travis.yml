@@ -9,7 +9,7 @@ install:
 
 before_script:
 - cd todoapp
-- echo -e "SECRET_KEY = 'secret_key" >> todoapp/secrets.py
+- echo -e "SECRET_KEY = "secret_key" >> todoapp/secrets.py
 
 script:
   - python manage.py test
