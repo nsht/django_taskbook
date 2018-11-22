@@ -16,34 +16,33 @@
     {% for todo in todos %}
     <li id="{{todo.id}}">
         <section class="todo-item">
+
             {% if todo.starred == 0 %}
-            <span class="icon has-text-grey star-toggle" data-todoid="{{todo.id}}">
-                {% else %}
+                <span class="icon has-text-grey star-toggle" data-todoid="{{todo.id}}">
+            {% else %}
                 <span class="icon has-text-warning star-toggle" data-todoid="{{todo.id}}">
-                    {% endif %}
+            {% endif %}
                     <i class="fas fa-star"></i>
                 </span>
-                <span class="board">{{ todo.todo_item }}</span>
+            <span class="board">{{ todo.todo_item }}</span>
 
-
-                <ol class="sub-item">
-                    {% if todo.subitem_set.all %}
-                    {% for subitem in todo.subitem_set.all %}
-                    {% if subitem.status == 0 %}
+            <ol class="sub-item">
+                {% if todo.subitem_set.all %}
+                {% for subitem in todo.subitem_set.all %}
+                {% if subitem.status == 0 %}
                     <li>
                         <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox">
-                        {% else %}
+                {% else %}
                     <li class="task-completed">
-                        <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox"
-                            checked>
-                        {% endif %}
-                        <span>{{ subitem.sub_item }}</span>
-                        <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
-                    </li>
-                    {% endfor %}
+                        <input type="checkbox" name="{{ subitem.id }}" id="subitem_{{ subitem.id }}" class="completed-checkbox subitem-checkbox" checked>
+                {% endif %}
+                    <span>{{ subitem.sub_item }}</span>
+                    <span class="relative-date">{{ subitem.sub_created|custom_timestamp }}</span>
+                </li>
+                {% endfor %}
 
-                    {% endif %}
-                </ol>
+                {% endif %}
+            </ol>
                 <a class="new-sub-item" data-todoid="{{todo.id}}" id="todo_{{todo.id}}">
                     <i class="fas fa-plus"></i>
                     Add New
