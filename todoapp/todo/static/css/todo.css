@@ -48,15 +48,19 @@ body{
 
 .light-theme{
     background-color: #fff;
-    color: #111
+    color: black;
+}
+
+.light-theme .title{
+    color:black;
 }
 
 .dark-theme{
     background-color: #10111a;
-    color: #67899d;
+    color: white;
 }
 
-.dark-theme, .title{
+.dark-theme .title{
     color:grey;
 }
 
@@ -64,4 +68,9 @@ body{
 .night-mode-toggle{
     float:right;
     cursor: pointer;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
 }
