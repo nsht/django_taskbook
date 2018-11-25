@@ -81,7 +81,6 @@ class SimpleTest(unittest.TestCase):
     def test_completion(self):
         # Check sub item
         response = self.client.post("/accounts/login/", self.credentials, follow=True)
-        print(response)
         subitem_id = response.context["todos"][0].subitem_set.all()[0].id
         response = self.client.post(
             "/todo/toggle-completion", {"id": subitem_id, "type": "subitem"}
