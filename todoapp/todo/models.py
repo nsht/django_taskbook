@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class TodoItem(models.Model):
+    todo_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     status = ((0, "Incomplete"), (1, "Complete"))
     starred_choice = ((0, "Unstarred"), (1, "Starred"))
     todo_item = models.CharField(max_length=255)

@@ -24,7 +24,7 @@ $(document).ready(function () {
             else {
                 $(this).parent().addClass('task-completed')
             }
-            $.post("/toggle-completion", data).done(function (result) {
+            $.post("toggle-completion", data).done(function (result) {
             });
 
         });
@@ -47,7 +47,7 @@ $(document).ready(function () {
                 $(this).addClass('has-text-warning')
 
             }
-            $.post("/toggle-star", data).done(function (result) {
+            $.post("toggle-star", data).done(function (result) {
             });
         });
     }
@@ -77,7 +77,7 @@ $(document).ready(function () {
             todo_item: $('#id_todo_item').val()
         }
         console.log(data);
-        $.post("/add", data).done(function (result) {
+        $.post("add", data).done(function (result) {
             $('.modal').removeClass('is-active');
         })
             .done(function (result) {
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 var lastChar = todo_item_id[todo_item_id.length - 1];
                 var parent = $('.new-todo-text-box').parent();
 
-                $.post("/new-sub-item", data).done(function (result) {
+                $.post("new-sub-item", data).done(function (result) {
                     console.log("ok");
                     $('.new-todo-text-box').remove();
                     parent.append(result);
@@ -193,13 +193,15 @@ $(document).ready(function () {
 
 
     $('.night-mode-toggle').click(function(){
-        if($('body').hasClass('dark-theme')){
-            $('body').removeClass('dark-theme')
-            $('body').addClass('light-theme')
+        if($('html').hasClass('dark-theme')){
+            $('html').removeClass('dark-theme')
+            // $('body').addClass('light-theme')
+            $('html').addClass('light-theme')
         }
         else{
-            $('body').removeClass('light-theme')
-            $('body').addClass('dark-theme')
+            $('html').removeClass('light-theme')
+            $('html').addClass('dark-theme')
+
         }
     });
 
