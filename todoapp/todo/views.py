@@ -42,10 +42,12 @@ def add_todo(request):
 def toggle_completion(request):
     if request.POST["type"] == "subitem":
         todo = get_object_or_404(SubItem, id=request.POST["id"])
+        if not todo.todo_id.todo_user == request.user:
+            return HttpResponse(status=401)
     else:
         todo = get_object_or_404(TodoItem, id=request.POST["id"])
-    if not todo.todo_id.todo_user == request.user:
-        return HttpResponse(status=401)
+        if not todo.todo_user_id == request.user.id:
+            return HttpResponse(status=401)
     if todo:
         if todo.status == 0:
             todo.status = 1
@@ -58,7 +60,7 @@ def toggle_completion(request):
 @login_required
 def toggle_stars(request):
     todo = get_object_or_404(TodoItem, id=request.POST["id"])
-    if not todo.todo_id.todo_user == request.user:
+    if not todo.todo_user_id == request.user.id:
         return HttpResponse(status=401)
     if todo:
         if todo.starred == 0:
