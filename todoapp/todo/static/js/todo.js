@@ -190,19 +190,40 @@ $(document).ready(function () {
         child_list.querySelector('.new-todo-text-box').focus()
     }
 
-
-
-    $('.night-mode-toggle').click(function(){
-        if($('html').hasClass('dark-theme')){
-            $('html').removeClass('dark-theme')
-            // $('body').addClass('light-theme')
-            $('html').addClass('light-theme')
+    var theme = sessionStorage.getItem('theme');
+    if (theme == 'dark-theme') {
+        if ($('html').hasClass('light-theme')) {
+            set_dark_theme()
         }
-        else{
-            $('html').removeClass('light-theme')
-            $('html').addClass('dark-theme')
+    }
+    else if (theme == 'light-theme') {
+        if ($('html').hasClass('dark-theme')) {
+            set_light_theme()
+        }
+    }
 
+    // Theme Toggle
+    $('.night-mode-toggle').click(function () {
+        if ($('html').hasClass('dark-theme')) {
+            set_light_theme()
+            sessionStorage.setItem('theme', 'light-theme')
+        }
+        else {
+            set_dark_theme()
+            sessionStorage.setItem('theme', 'dark-theme')
         }
     });
+
+    function set_dark_theme() {
+        $('html').removeClass('light-theme')
+        $('html').addClass('dark-theme')
+    }
+
+    function set_light_theme() {
+        $('html').removeClass('dark-theme')
+        $('html').addClass('light-theme')
+    }
+
+
 
 });
